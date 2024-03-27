@@ -11,30 +11,42 @@ const Login = () => {
     return(
         <SafeAreaView style={styles.container}>
              <LinearGradient
-        // Background Linear Gradient
                 colors={['#4c669f', '#3b5998', ]}
                 style={styles.background}
              />
-            <View style={styles.LoginMain}>
-                <View>
-                    <Text>
+            <View style={[styles.LoginMain, styles.shadowbutton]}>
+                <View style={styles.h1}>    
+                    <Image 
+                        source={require('./img/user.svg')}
+                        style={{width: 50, height: 50,}}/>
+                
+                    <Text style={styles.Title}>
                         Login
                     </Text>
                 </View>
-                
+                <View style={styles.FormInput}>
                     <TextInput
                         style={styles.Input}
                         onChangeText={onChangeText}
                         value={text}
                     />
+                </View>
+                <View>
                     <TextInput
                         style={styles.Input}
                         onChangeText={onChangeNumber}
                         value={number}
-                        placeholder="useless placeholder"
+                        placeholder="senha"
                         keyboardType="numeric"
                     />
-                
+                </View>
+                <View style={styles.buttonSelect}>
+                    <Pressable style={styles.button} >
+                        <Text style={styles.SubTitle}>
+                        Logar
+                    </Text>
+                    </Pressable>
+                </View>
             </View>
         </SafeAreaView>
     );
@@ -66,9 +78,43 @@ const styles = StyleSheet.create({
         borderWidth: 2, 
         height: 40,
         padding: 10,
-        borderRadius: 15,
-    }
+        borderRadius: 20,
+    },
+    FormInput:{
+        paddingBottom:10,
 
+    },
+    h1:{
+        paddingTop: 0,
+        paddingBottom:40,
+        alignItems: 'center',
+        justifyContent: 'center',   
+    },
+    Title:{
+        fontFamily: 'Monospace',
+        fontSize: 25,
+        fontWeight: 600,
+        paddingTop:10,
+    },
+    shadowbutton: { 
+        shadowColor: 'black',
+        shadowOffset: {width: 6, height: 8},
+        shadowOpacity: 0.5,
+        shadowRadius: 3,
+    },
+    button:{
+    
+        borderWidth: 2, 
+        height: 40,
+        padding: 10,
+        borderRadius: 20,
+        backgroundColor: '#CFC9D9'
+    },
+    buttonSelect:{
+        paddingTop: 10,
+       
+    },
+    
 })
 
 export default Login;
