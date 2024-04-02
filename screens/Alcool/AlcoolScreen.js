@@ -3,37 +3,44 @@ import { StyleSheet, Text, View, TextInput, Pressable, Image} from 'react-native
 import {SafeAreaView} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
-import styles from './stylesImc.js';
+import styles from './stylesAlcool';
 
 
 
-const imc = ({navigation}) => {
-    const [altura, setAltura] = useState("");
-    const [peso, setPeso] = useState("");
-    function calcularIMC() 
+const Alcool = ({navigation}) => {
+    const [gasolina, setGasolina] = useState("");
+    const [alcool, setAlcool] = useState("");
+    function relacaoPreco() 
         {
-        const alturaMetros = altura / 100;
-        const calculo = peso / (alturaMetros * alturaMetros);
-        console.log(`Seu IMC é: ${calculo}`);
+          const Preco = parseFloat(alcool)/parseFloat(gasolina);
+           if (Preco < 0.7) {
+            console.log("Vale a pena abastecer com álcool!");
+            
+           } else {
+            console.log ("Vale a pena abastecer com gasolina!")
+        }      
+       
     }
+    
     
     return (
         <SafeAreaView style={styles.container}>
             <View style={[styles.LoginMain, styles.shadowbutton]}>
                 <View style={styles.IconImage}>
-                    <Image
-                        source={require('../img/imc.png')}
-                        style={{width: 100, height: 80,}}
+                <Image
+                        source={require('../img/gasolina.png')}
+                        style={{width: 80, height: 80,}}
                     />
+                   
                     
                 </View> 
                
                 <View style={styles.FormInput}>
                     <TextInput
                         style={styles.Input}
-                        placeholder='Altura (ex:170)'
-                        onChangeText={text => setAltura(text)}
-                        value={altura}
+                        placeholder='Gasolina'
+                        onChangeText={text => setGasolina(text)}
+                        value={gasolina}
                         keyboardType="numeric"
                         
                     />
@@ -41,14 +48,14 @@ const imc = ({navigation}) => {
                 <View style={styles.FormInput} > 
                     <TextInput 
                         style={styles.Input}
-                        placeholder='Peso (ex:68)'
-                        onChangeText={text => setPeso(text)}
-                        value={peso}
+                        placeholder='Alcool'
+                        onChangeText={text => setAlcool(text)}
+                        value={alcool}
                         keyboardType="numeric"
                     />
                 </View>
                 <View >
-                    <Pressable style={styles.button}  onPress={calcularIMC}>
+                    <Pressable style={styles.button}  onPress={relacaoPreco}>
                         <Text style={styles.buttoninput}>
                         Calcular
                     </Text>
@@ -58,4 +65,4 @@ const imc = ({navigation}) => {
         </SafeAreaView>
     );  
 }
-export default imc;
+export default Alcool;

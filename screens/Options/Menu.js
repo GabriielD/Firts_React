@@ -39,19 +39,13 @@ const options =  ({navigation}) => {
               </View> 
               <View  style={styles.options}>
                 
-                <Pressable style={[styles.button,styles.shadowbutton]} >
+                <Pressable style={[styles.button,styles.shadowbutton]} onPress={() => navigation.navigate('Descontos')}>
                   <Text style={styles.SubTitle}>
                     Descontos
                   </Text>
                 </Pressable>
               </View>
-              <View>
-                <Pressable style={[styles.button,styles.shadowbutton]}  >
-                  <Text style={styles.SubTitle}>
-                    Vazio
-                  </Text>
-                </Pressable>
-              </View>
+              
             </View>
             
             

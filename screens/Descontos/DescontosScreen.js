@@ -3,23 +3,16 @@ import { StyleSheet, Text, View, TextInput, Pressable, Image} from 'react-native
 import {SafeAreaView} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
-import styles from './stylesAlcool';
+import styles from './stylesDescontos';
 
-
-
-const Alcool = ({navigation}) => {
-    const [gasolina, setGasolina] = useState("");
-    const [alcool, setAlcool] = useState("");
-    function relacaoPreco() 
+const Descontos = ({navigation}) => {
+    const [porcentagem, setporcentagem] = useState("");
+    const [valor, setValor] = useState("");
+    function CalcularDesconto() 
         {
-          const Preco = alcool/gasolina;
-           if (Preco < 0.7) {
-            return "Vale a pena abastecer com álcool!";
-            
-           } else {
-            return "Vale a pena abastecer com gasolina!";
-        }      
-       
+            const desconto = valor * (porcentagem / 100);
+            const valorComDesconto = valor - desconto;
+            console.log(valorComDesconto);
     }
     
     
@@ -27,6 +20,10 @@ const Alcool = ({navigation}) => {
         <SafeAreaView style={styles.container}>
             <View style={[styles.LoginMain, styles.shadowbutton]}>
                 <View style={styles.IconImage}>
+                <Image
+                        source={require('../img/promocao.png')}
+                        style={{width: 80, height: 80,}}
+                    />
                    
                     
                 </View> 
@@ -34,9 +31,9 @@ const Alcool = ({navigation}) => {
                 <View style={styles.FormInput}>
                     <TextInput
                         style={styles.Input}
-                        placeholder='Gasolina'
-                        onChangeText={text => setGasolina(text)}
-                        value={gasolina}
+                        placeholder='Porcentagem de Desconto'
+                        onChangeText={text => setporcentagem(text)}
+                        value={porcentagem}
                         keyboardType="numeric"
                         
                     />
@@ -44,14 +41,14 @@ const Alcool = ({navigation}) => {
                 <View style={styles.FormInput} > 
                     <TextInput 
                         style={styles.Input}
-                        placeholder='Alcool'
-                        onChangeText={text => setAlcool(text)}
-                        value={alcool}
+                        placeholder='Valor do produto'
+                        onChangeText={text => setValor(text)}
+                        value={valor}
                         keyboardType="numeric"
                     />
                 </View>
                 <View >
-                    <Pressable style={styles.button}  onPress={relacaoPreco}>
+                    <Pressable style={styles.button}  onPress={CalcularDesconto}>
                         <Text style={styles.buttoninput}>
                         Calcular
                     </Text>
@@ -61,4 +58,4 @@ const Alcool = ({navigation}) => {
         </SafeAreaView>
     );  
 }
-export default Alcool;
+export default Descontos;
